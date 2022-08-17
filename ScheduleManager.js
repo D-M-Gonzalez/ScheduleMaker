@@ -2,7 +2,14 @@ import { _DailySchedule } from "./DailySchedule.js"
 import { convertDateToString, convertStringDateToDate } from "./lib.js"
 
 export class ScheduleManager{
-    // new Date(), 30, 4, "08:00", "12:00"
+    /**
+    * @param {string} name
+    * @param {"YYYY-MM-DD"} initialDate
+    * @param {number} futureLength
+    * @param {number} dailyTurns
+    * @param {"HH:MM"} startingHour
+    * @param {"HH:MM"} endingHour
+    */
     constructor(name,initialDate,futureLength,dailyTurns,startingHour,endingHour){
         this._name = name
         this._initialDate = initialDate
@@ -73,6 +80,11 @@ export class ScheduleManager{
         localStorage.setItem(this._name,JSONSchedules)
     }
     // makes a turn taken, unavailable, day = "YYYY-MM-DD", hour = "HH:MM"
+    /**
+     * 
+     * @param {"YYYY-MM-DD"} day 
+     * @param {"HH:MM"} hour 
+     */
     takeTurn(day,hour){
         try{
             const selectedDay = this._schedules.find((schedule)=>{
@@ -85,6 +97,11 @@ export class ScheduleManager{
         }
     }
     // makes a turn untaken, available, day = "YYYY-MM-DD", hour = "HH:MM"
+    /**
+     * 
+     * @param {"YYYY-MM-DD"} day 
+     * @param {"HH:MM"} hour 
+     */   
     unTakeTurn(day,hour){
         try{
             const selectedDay = this._schedules.find((schedule)=>{
@@ -115,6 +132,10 @@ export class ScheduleManager{
         return schedulesList
     }
     // Gets a schedule by it's day, day = "YYYY-MM-DD"
+    /**
+     * 
+     * @param {"YYYY-MM-DD"} day 
+     */
     getDaySchedules(day){
         const schedulesList = []
         const searchedDay = this._schedules.find((schedule)=>{
@@ -134,6 +155,11 @@ export class ScheduleManager{
         return schedulesList
     }
     // Gets a single turn, day = "YYYY-MM-DD", hour = "HH:MM"
+    /**
+     * 
+     * @param {"YYYY-MM-DD"} day 
+     * @param {"HH:MM"} hour 
+     */
     getHourSchedule(day,hour){
         const searchedTurn = {
             hour: "",
