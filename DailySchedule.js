@@ -1,41 +1,41 @@
 import { HourlySchedule } from "./HourlySchedule.js"
 import { convertHourToMinuteInteger, convertMinuteToHourlyString } from "./lib.js"
 
-export class DailySchedule{
+export class _DailySchedule{
     constructor(day,initialTurns,startingHour,endingHour){
-        this.day = day
-        this.initialTurns = initialTurns
-        this.startingHour = startingHour
-        this.endingHour = endingHour
-        this.turns = []
-        this.initDailySchedule()
+        this._day = day
+        this._initialTurns = initialTurns
+        this._startingHour = startingHour
+        this._endingHour = endingHour
+        this._turns = []
+        this._initDailySchedule()
     }
 
-    initDailySchedule(){
-        const endingMinutes = convertHourToMinuteInteger(this.endingHour)
-        const startingMinutes = convertHourToMinuteInteger(this.startingHour)
+    _initDailySchedule(){
+        const endingMinutes = convertHourToMinuteInteger(this._endingHour)
+        const startingMinutes = convertHourToMinuteInteger(this._startingHour)
         const lengthInMinutes = endingMinutes - startingMinutes
-        const minutesPerTurn = lengthInMinutes / this.initialTurns
+        const minutesPerTurn = lengthInMinutes / this._initialTurns
 
-        for(let i = 0; i<this.initialTurns; i++){
+        for(let i = 0; i<this._initialTurns; i++){
             const hourlyString = convertMinuteToHourlyString(startingMinutes + (minutesPerTurn * i))
             const newHourlySchedule = new HourlySchedule(hourlyString,true)
-            this.turns.push(newHourlySchedule)
+            this._turns.push(newHourlySchedule)
         }
     }
 
-    appendTurn(hour){
+    _appendTurn(hour){
         const newHourlySchedule = new HourlySchedule(hour,true)
-        this.turns.push(newHourlySchedule)
+        this._turns.push(newHourlySchedule)
     }
 
-    takeTurn(hour){
-        const searchedTurn = this.turns.find((turn)=>{return turn.hour == hour})
-        searchedTurn.makeAvailable(false)
+    _takeTurn(hour){
+        const searchedTurn = this._turns.find((turn)=>{return turn._hour == hour})
+        searchedTurn._makeAvailable(false)
     }
 
-    untakeTurn(hour){
-        const searchedTurn = this.turns.find((turn)=>{return turn.hour == hour})
-        searchedTurn.makeAvailable(true)
+    _unTakeTurn(hour){
+        const searchedTurn = this._turns.find((turn)=>{return turn._hour == hour})
+        searchedTurn._makeAvailable(true)
     }
 }

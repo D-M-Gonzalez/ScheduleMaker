@@ -1,9 +1,9 @@
 export class HourlySchedule{
     constructor(hour,available){
-        this.hour = hour
-        this.available = available
+        this._hour = hour
+        this._available = available
     }
-    makeAvailable(boolean){
-        return this.available = boolean
+    _makeAvailable(boolean){
+        this._available = boolean
     }
 }
