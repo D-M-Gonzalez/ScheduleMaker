@@ -1,4 +1,4 @@
-import { HourlySchedule } from "./HourlySchedule.js"
+import { _HourlySchedule } from "./HourlySchedule.js"
 import { convertHourToMinuteInteger, convertMinuteToHourlyString } from "./lib.js"
 
 export class _DailySchedule{
@@ -19,13 +19,13 @@ export class _DailySchedule{
 
         for(let i = 0; i<this._initialTurns; i++){
             const hourlyString = convertMinuteToHourlyString(startingMinutes + (minutesPerTurn * i))
-            const newHourlySchedule = new HourlySchedule(hourlyString,true)
+            const newHourlySchedule = new _HourlySchedule(hourlyString,true)
             this._turns.push(newHourlySchedule)
         }
     }
 
     _appendTurn(hour){
-        const newHourlySchedule = new HourlySchedule(hour,true)
+        const newHourlySchedule = new _HourlySchedule(hour,true)
         this._turns.push(newHourlySchedule)
     }
 

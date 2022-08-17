@@ -12,11 +12,11 @@ export class ScheduleManager{
     */
     constructor(name,initialDate,futureLength,dailyTurns,startingHour,endingHour){
         this._name = name
-        this._initialDate = initialDate
-        this._futureLength = futureLength
-        this._dailyTurns = dailyTurns
-        this._startingHour = startingHour
-        this._endingHour = endingHour
+        this._initialDate = initialDate ? initialDate : new Date()
+        this._futureLength = futureLength ? futureLength : 7
+        this._dailyTurns = dailyTurns ? dailyTurns : 9
+        this._startingHour = startingHour ? startingHour : "9:00"
+        this._endingHour = endingHour ? endingHour : "18:00"
         this._schedules = []
         this._loadStorage()
         this._initScheduleManager()

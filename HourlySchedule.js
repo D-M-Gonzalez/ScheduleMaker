@@ -1,4 +1,4 @@
-export class HourlySchedule{
+export class _HourlySchedule{
     constructor(hour,available){
         this._hour = hour
         this._available = available
