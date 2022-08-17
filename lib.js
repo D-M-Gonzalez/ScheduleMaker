@@ -11,7 +11,7 @@ export function convertHourToMinuteInteger(hourlyString){
 
 // Parses a minute string into an hourly string
 /**
-* @param {"HH:MM"} minuteString
+* @param {"number"} minuteString
 * @returns "HH:MM"
 */
 export function convertMinuteToHourlyString(minuteString){

@@ -4,7 +4,7 @@ import { convertDateToString, convertStringDateToDate } from "./lib.js"
 export class ScheduleManager{
     /**
     * @param {string} name
-    * @param {"YYYY-MM-DD"} initialDate
+    * @param {"Date"} initialDate
     * @param {number} futureLength
     * @param {number} dailyTurns
     * @param {"HH:MM"} startingHour
@@ -83,7 +83,7 @@ export class ScheduleManager{
     /**
      * 
      * @param {"YYYY-MM-DD"} day 
-     * @param {"HH:MM"} hour 
+     * @param {"HH:MM"} hour
      */
     takeTurn(day,hour){
         try{
@@ -114,6 +114,10 @@ export class ScheduleManager{
         }
     }
     // Gets the list of all schedules
+    /**
+     * 
+     * @returns [{day:"YYYY-MM-DD",turns:[{hour:"HH:MM",available:boolean}]}]
+     */
     getAllSchedules(){
         const schedulesList = []
         this._schedules.forEach((schedule)=>{
@@ -133,8 +137,8 @@ export class ScheduleManager{
     }
     // Gets a schedule by it's day, day = "YYYY-MM-DD"
     /**
-     * 
      * @param {"YYYY-MM-DD"} day 
+     * @returns day:"YYYY-MM-DD",turns:[{hour:"HH:MM",available:boolean}]
      */
     getDaySchedules(day){
         const schedulesList = []
@@ -156,9 +160,9 @@ export class ScheduleManager{
     }
     // Gets a single turn, day = "YYYY-MM-DD", hour = "HH:MM"
     /**
-     * 
      * @param {"YYYY-MM-DD"} day 
      * @param {"HH:MM"} hour 
+     * @returns hour:"HH:MM",available:boolean
      */
     getHourSchedule(day,hour){
         const searchedTurn = {
